@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>유연수 | 디지털 웹 명함</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 배경 장식 요소 -->
+  <div class="bg-shape shape-1"></div>
+  <div class="bg-shape shape-2"></div>
+  <div class="bg-shape shape-3"></div>
+
+  <main class="card-wrapper">
+    <div class="business-card" id="businessCard">
+      <!-- 카드 상단 헤더 & 액션 버튼 -->
+      <div class="card-header">
+        <span class="badge">Digital Business Card</span>
+        <div class="header-actions">
+          <button id="themeToggleBtn" class="icon-btn" title="테마 변경" aria-label="테마 변경">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+          <button id="shareBtn" class="icon-btn" title="명함 공유" aria-label="명함 공유">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- 프로필 캐릭터 아바타 영역 -->
+      <div class="avatar-container">
+        <div class="avatar-glow"></div>
+        <div class="avatar-svg-box">
+          <!-- 앞머리가 있고 머리를 묶은 단정한 여성 캐릭터 SVG -->
+          <svg viewBox="0 0 240 240" class="character-svg" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FFE5EC" />
+                <stop offset="100%" stop-color="#FFC2D1" />
+              </linearGradient>
+              <linearGradient id="hairGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#3A2D28" />
+                <stop offset="100%" stop-color="#211815" />
+              </linearGradient>
+              <linearGradient id="skinGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#FFF2EC" />
+                <stop offset="100%" stop-color="#FFE5D9" />
+              </linearGradient>
+              <linearGradient id="clothesGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#6C5CE7" />
+                <stop offset="100%" stop-color="#a29bfe" />
+              </linearGradient>
+              <filter id="blushBlur" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="3" />
+              </filter>
+            </defs>
+
+            <!-- 배경 원형 -->
+            <circle cx="120" cy="120" r="110" fill="url(#bgGrad)" />
+
+            <!-- 아래로 묶은 머리(로우 포니테일) - 목 뒤로 풍성하게 내려오는 실루엣 -->
+            <g class="low-ponytail-back">
+              <!-- 목 뒤로 차분하게 떨어지는 묶은 머리 볼륨 -->
+              <path d="M 98 135 C 88 160, 85 190, 92 225 C 104 230, 136 230, 148 225 C 155 190, 152 160, 142 135 Z" fill="url(#hairGrad)" />
+              
+              <!-- 묶음 머릿결 디테일 라인 -->
+              <path d="M 104 150 Q 94 185 100 220" stroke="#4A3B35" stroke-width="2.2" fill="none" stroke-linecap="round" />
+              <path d="M 136 150 Q 146 185 140 220" stroke="#4A3B35" stroke-width="2.2" fill="none" stroke-linecap="round" />
+              <path d="M 120 160 Q 120 190 120 225" stroke="#4A3B35" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.8" />
+              
+              <!-- 목 뒤 머리끈/헤어슈슈 (목 아래 묶음 포인트) -->
+              <ellipse cx="120" cy="154" rx="20" ry="9" fill="#FF758F" />
+              <ellipse cx="120" cy="154" rx="14" ry="6" fill="#FF4D6D" />
+            </g>
+
+            <!-- 옷 & 목 -->
+            <g class="body-group">
+              <!-- 목 -->
+              <path d="M 106 142 L 106 175 L 134 175 L 134 142 Z" fill="url(#skinGrad)" />
+              <path d="M 106 156 Q 120 164 134 156" fill="#F4D3C4" opacity="0.6" />
+              
+              <!-- 상의 (세련된 라벤더 니트 & 셔츠 카라) -->
+              <path d="M 60 225 C 60 185, 90 172, 120 172 C 150 172, 180 185, 180 225 Z" fill="url(#clothesGrad)" />
+              <!-- 카라 깃 -->
+              <path d="M 120 195 L 100 172 L 120 172 Z" fill="#FFFFFF" opacity="0.95" />
+              <path d="M 120 195 L 140 172 L 120 172 Z" fill="#FFFFFF" opacity="0.95" />
+              <path d="M 120 195 L 120 225" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.5" />
+            </g>
+
+            <!-- 목선 앞으로 살짝 자연스럽게 흐르는 묶은 머리 가닥 디테일 -->
+            <g class="low-ponytail-front">
+              <path d="M 134 158 Q 142 175 138 200 Q 135 210 130 215" stroke="url(#hairGrad)" stroke-width="6" stroke-linecap="round" fill="none" />
+              <path d="M 134 162 Q 140 180 136 205" stroke="#4A3B35" stroke-width="1.8" fill="none" stroke-linecap="round" />
+            </g>
+
+            <!-- 귀 -->
+            <ellipse cx="80" cy="120" rx="8" ry="12" fill="url(#skinGrad)" />
+            <ellipse cx="80" cy="120" rx="4" ry="7" fill="#F4D3C4" />
+            <ellipse cx="160" cy="120" rx="8" ry="12" fill="url(#skinGrad)" />
+            <ellipse cx="160" cy="120" rx="4" ry="7" fill="#F4D3C4" />
+            
+            <!-- 귀걸이 심플 골드 링 -->
+            <circle cx="80" cy="131" r="3" fill="#F9CA24" />
+            <circle cx="160" cy="131" r="3" fill="#F9CA24" />
+
+            <!-- 얼굴 윤곽 -->
+            <path d="M 82 105 C 82 75, 158 75, 158 105 C 158 138, 142 158, 120 158 C 98 158, 82 138, 82 105 Z" fill="url(#skinGrad)" />
+
+            <!-- 머리카락 베이스(두상 볼륨) -->
+            <path d="M 78 105 C 76 65, 164 65, 162 105 C 162 115, 158 125, 158 125 C 158 125, 164 88, 120 86 C 80 88, 82 125, 82 125 C 82 125, 78 115, 78 105 Z" fill="url(#hairGrad)" />
+
+            <!-- 잔머리 / 옆머리 애교머리 -->
+            <path d="M 83 105 Q 81 125 86 138" stroke="url(#hairGrad)" stroke-width="4.5" stroke-linecap="round" fill="none" />
+            <path d="M 157 105 Q 159 125 154 138" stroke="url(#hairGrad)" stroke-width="4.5" stroke-linecap="round" fill="none" />
+
+            <!-- 앞머리 (뱅 헤어 스타일) -->
+            <g class="bangs-group">
+              <!-- 앞머리 덩어리 베이스 -->
+              <path d="M 82 98 C 88 116, 98 120, 103 120 C 108 114, 114 116, 120 120 C 126 114, 133 115, 138 120 C 143 118, 152 115, 158 98 C 158 78, 82 78, 82 98 Z" fill="url(#hairGrad)" />
+              <!-- 앞머리 결 라인 디테일 -->
+              <path d="M 96 85 Q 98 112 102 118" stroke="#4A3B35" stroke-width="2" stroke-linecap="round" fill="none" />
+              <path d="M 118 85 Q 119 111 120 118" stroke="#4A3B35" stroke-width="2" stroke-linecap="round" fill="none" />
+              <path d="M 136 85 Q 138 112 138 118" stroke="#4A3B35" stroke-width="2" stroke-linecap="round" fill="none" />
+              <!-- 앞머리 하이라이트 엔젤링 -->
+              <path d="M 92 90 Q 120 95 148 90" stroke="#68554F" stroke-width="2.5" stroke-linecap="round" opacity="0.6" fill="none" />
+            </g>
+
+            <!-- 눈썹 -->
+            <path d="M 95 106 Q 104 102 111 106" stroke="#4A3B35" stroke-width="2.5" stroke-linecap="round" fill="none" />
+            <path d="M 129 106 Q 136 102 145 106" stroke="#4A3B35" stroke-width="2.5" stroke-linecap="round" fill="none" />
+
+            <!-- 눈 & 속눈썹 -->
+            <g class="eyes-group">
+              <!-- 왼쪽 눈 -->
+              <ellipse cx="103" cy="118" rx="4.5" ry="5.5" fill="#2D201A" />
+              <circle cx="101.5" cy="116" r="1.8" fill="#FFFFFF" />
+              <path d="M 97 114 Q 103 110 109 114" stroke="#2D201A" stroke-width="2" stroke-linecap="round" fill="none" />
+              <!-- 왼쪽 속눈썹 -->
+              <path d="M 108 113 L 111 110" stroke="#2D201A" stroke-width="1.8" stroke-linecap="round" />
+
+              <!-- 오른쪽 눈 -->
+              <ellipse cx="137" cy="118" rx="4.5" ry="5.5" fill="#2D201A" />
+              <circle cx="135.5" cy="116" r="1.8" fill="#FFFFFF" />
+              <path d="M 131 114 Q 137 110 143 114" stroke="#2D201A" stroke-width="2" stroke-linecap="round" fill="none" />
+              <!-- 오른쪽 속눈썹 -->
+              <path d="M 142 113 L 145 110" stroke="#2D201A" stroke-width="1.8" stroke-linecap="round" />
+            </g>
+
+            <!-- 앙증맞은 코 -->
+            <path d="M 120 123 Q 121 127 118 128" stroke="#E5B299" stroke-width="2" stroke-linecap="round" fill="none" />
+
+            <!-- 볼터치 (블러셔) -->
+            <ellipse cx="96" cy="128" rx="8" ry="4.5" fill="#FF758F" opacity="0.5" filter="url(#blushBlur)" />
+            <ellipse cx="144" cy="128" rx="8" ry="4.5" fill="#FF758F" opacity="0.5" filter="url(#blushBlur)" />
+
+            <!-- 따뜻한 미소 입술 -->
+            <path d="M 114 138 Q 120 144 126 138" stroke="#E85D75" stroke-width="2.5" stroke-linecap="round" fill="none" />
+          </svg>
+        </div>
+        <div class="status-indicator" title="현재 새로운 기회와 소통에 열려있어요!">
+          <span class="status-dot"></span> Available for Connect
+        </div>
+      </div>
+
+      <!-- 프로필 텍스트 정보 -->
+      <div class="profile-info">
+        <h1 class="name">유연수 <span class="name-en">You Yeon-su</span></h1>
+        <p class="role">
+          <i class="fa-solid fa-graduation-cap"></i> 고려대학교 세종캠퍼스 문화창의학부
+        </p>
+        <p class="bio">
+          "문화와 감성을 잇고, 일상에 새로운 가치를 더하는 문화창의학부 유연수입니다."
+        </p>
+        <div class="tag-cloud">
+          <span class="tag">#문화콘텐츠</span>
+          <span class="tag">#크리에이티브</span>
+          <span class="tag">#기획</span>
+          <span class="tag">#스토리텔링</span>
+        </div>
+      </div>
+
+      <!-- 연락처 인터랙티브 리스트 -->
+      <div class="contact-section">
+        <!-- 이메일 카드 -->
+        <div class="contact-item" data-type="email" data-value="uu_0vy@korea.ac.kr">
+          <div class="contact-icon email-icon">
+            <i class="fa-solid fa-envelope"></i>
+          </div>
+          <div class="contact-detail">
+            <span class="label">이메일</span>
+            <span class="value">uu_0vy@korea.ac.kr</span>
+          </div>
+          <div class="action-buttons">
+            <a href="mailto:uu_0vy@korea.ac.kr" class="action-btn" title="메일 보내기" aria-label="메일 발송">
+              <i class="fa-solid fa-paper-plane"></i>
+            </a>
+            <button class="action-btn copy-btn" data-copy="uu_0vy@korea.ac.kr" title="이메일 복사" aria-label="이메일 주소 복사">
+              <i class="fa-regular fa-copy"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- 전화번호 카드 -->
+        <div class="contact-item" data-type="phone" data-value="010-1234-5678">
+          <div class="contact-icon phone-icon">
+            <i class="fa-solid fa-phone"></i>
+          </div>
+          <div class="contact-detail">
+            <span class="label">연락처</span>
+            <span class="value">010-1234-5678</span>
+          </div>
+          <div class="action-buttons">
+            <a href="tel:010-1234-5678" class="action-btn" title="전화 걸기" aria-label="전화 걸기">
+              <i class="fa-solid fa-phone-flip"></i>
+            </a>
+            <button class="action-btn copy-btn" data-copy="010-1234-5678" title="전화번호 복사" aria-label="전화번호 복사">
+              <i class="fa-regular fa-copy"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 하단 버튼: 연락처 저장(vCard) & QR 코드 -->
+      <div class="card-footer">
+        <button id="downloadVcardBtn" class="primary-btn">
+          <i class="fa-solid fa-address-card"></i> 연락처 저장하기 (.vcf)
+        </button>
+        <button id="qrModalBtn" class="secondary-btn" title="QR 코드 명함">
+          <i class="fa-solid fa-qrcode"></i> QR
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!-- QR 코드 모달 -->
+  <div class="modal-overlay" id="qrModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>모바일로 명함 스캔하기</h3>
+        <button class="modal-close" id="closeModalBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="qr-container">
+          <img id="qrImage" src="" alt="명함 QR코드" />
+        </div>
+        <p class="qr-instruction">스마트폰 카메라로 스캔하여 연락처를 확인하세요.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 토스트 알림 메시지 -->
+  <div class="toast-message" id="toastMessage">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toastText">클립보드에 복사되었습니다!</span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
